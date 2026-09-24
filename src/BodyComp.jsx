@@ -1,14 +1,16 @@
+import React from "react"
 export default function BodyComp(){
-    const ingredients = ["Chicken","Oregano","Tomatoes"]
-    const ingredientsList = ingredients.map(ingredient =>(
+    const [ingredients,setIngredients] = React.useState([])
+    const ingredientsListItems = ingredients.map(ingredient =>(
         <li key={ingredient}>{ingredient}</li>
     ))
     function handleSubmit(event){
-        event.preventDefault();
-        const formData= new FormData(event.currentTarget)
-        const newIngredient = formData.get("ingredient")
-        ingredients.push(event.currentTarget)
-        
+        event.preventDefault(); //to prevent page refresh
+        const formElement=event.currentTarget
+        const formData= new FormData(formElement)
+        const newIngredient = formData.get("ingredient") 
+        setIngredients(prevIngredients=>[...prevIngredients,newIngredient])
+        formElement.reset()
     }
     return(
         <main>
@@ -22,7 +24,7 @@ export default function BodyComp(){
                 <button>Add ingredient</button>
             </form>
             <ul>
-                {ingredientsList}
+                {ingredientsListItems}
             </ul>
         </main>
     )
