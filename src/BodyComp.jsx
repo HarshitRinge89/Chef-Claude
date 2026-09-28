@@ -24,6 +24,7 @@ export default function BodyComp(){
     }
     return(
         <main>
+            <h2>Enter atleast 4 ingredients</h2>
             <form onSubmit={handleSubmit}className="ingredients-form">
                 <input 
                     aria-label="Add ingredient"
