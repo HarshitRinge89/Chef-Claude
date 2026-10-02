@@ -43,7 +43,7 @@ header{
   display: flex;
   justify-content: center;
   align-items: center;
-  background:linear-gradient(to right,rgb(243 79 28 /0.9),rgb(127 188 0 /0.7),rgb(0 164 239 /0.7),rgb(255 186 1 /0.9));
+  background:linear-gradient(to right,rgb(0 164 239 /0.9),rgb(127 188 0 /0.7),rgb(243 79 28 /0.7),rgb(255 186 1 /0.9));
   gap:11px;
   height: 80px;
 }

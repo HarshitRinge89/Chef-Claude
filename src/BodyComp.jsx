@@ -8,6 +8,13 @@ export default function BodyComp(){
     ))
     const [recipe,setRecipe] = React.useState("")
     const [loading,setLoading] = React.useState(false)
+    const recipeSection = React.useRef(null);
+    console.log(recipeSection)
+    React.useEffect(()=>{
+        if(recipe!=="" && recipeSection.current!=null){
+            recipeSection.current.scrollIntoView({behaviour:"smooth"})
+        }
+    },[recipe])
     async function getRecipe(){
         setLoading(true);
         const recipeMarkdown= await getRecipeFromMistral(ingredients)
@@ -38,7 +45,7 @@ export default function BodyComp(){
                 <h2>Ingredients on hand:</h2>
                 <ul className="ingredients-list" aria-live="polite">{ingredientsListItems}</ul>
                 {ingredients.length>3 && <div className="get-recipe-container">
-                    <div>
+                    <div ref={recipeSection}>
                         <h3>Ready for a recipe?</h3>
                         <p>Generate a recipe from your list of ingredients.</p>
                     </div>
